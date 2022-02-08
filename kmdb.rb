@@ -75,7 +75,9 @@ Role.destroy_all
 
 # Generate models and tables, according to the domain model
 # TODO!
-
+# student note: Ran rails generate model movie, person and role in terminal
+# student note: Inserted columns into db/migrate files for all 3 of above
+# student note: ran belongs_to
 
 # Insert data into your database that reflects the sample data shown above
 # Do not use hard-coded foreign key IDs.
