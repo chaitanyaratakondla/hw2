@@ -75,13 +75,219 @@ Role.destroy_all
 
 # Generate models and tables, according to the domain model
 # TODO!
-# student note: Ran rails generate model movie, person and role in terminal
+# student note: Ran rails generate model for movie, person and role in terminal
 # student note: Inserted columns into db/migrate files for all 3 of above
-# student note: ran belongs_to
+# student note: Updated apps/models with belongs_to and has_many
+# student note: ran db:migrate to create development.sqlite3 and data file. Ran rails runner data.rb to check layout of table
 
 # Insert data into your database that reflects the sample data shown above
 # Do not use hard-coded foreign key IDs.
 # TODO!
+
+#starting with persons table
+
+person = Person.new
+person.name = "Christopher Nolan"
+person.save
+
+person = Person.new
+person.name = "Christian Bale"
+person.save
+
+person = Person.new
+person.name = "Michael Caine"
+person.save
+
+person = Person.new
+person.name = "Liam Neeson"
+person.save
+
+person = Person.new
+person.name = "Katie Holmes"
+person.save
+
+person = Person.new
+person.name = "Gary Oldman"
+person.save
+
+person = Person.new
+person.name = "Heath Ledger"
+person.save
+
+person = Person.new
+person.name = "Aaron Eckhart"
+person.save
+
+person = Person.new
+person.name = "Maggie Gyllenhaal"
+person.save
+
+person = Person.new
+person.name = "Tom Hardy"
+person.save
+
+person = Person.new
+person.name = "Joseph Gordon-Levitt"
+person.save
+
+person = Person.new
+person.name = "Anne Hathway"
+person.save
+
+# Values for movies table
+
+director = Person.where({name: "Christopher Nolan"})[0]
+movie = Movie.new({
+    title: "Batman Begins",
+    year_of_release: 2005,
+    rating: "PG-13",
+    person_id: director.id
+})
+movie.save
+
+movie = Movie.new({
+    title: "The Dark Knight",
+    year_of_release: 2008,
+    rating: "PG-13",
+    person_id: director.id
+})
+movie.save
+
+movie = Movie.new({
+    title: "The Dark Knight Rises",
+    year_of_release: 2012,
+    rating: "PG-13",
+    person_id: director.id
+})
+movie.save
+
+# Values for roles table
+
+moviename = Movie.where({title: "Batman Begins"})[0]
+
+actorname = Person.where({name: "Christian Bale"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "Bruce Wayne"
+})
+role.save
+
+actorname = Person.where({name: "Michael Caine"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "Alfred"
+})
+role.save
+
+actorname = Person.where({name: "Liam Neeson"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "Ra's al-Ghul"
+})
+role.save
+
+actorname = Person.where({name: "Katie Holmes"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "Rachel Dawes"
+})
+role.save
+
+actorname = Person.where({name: "Gary Oldman"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "Commissioner Gordon"
+})
+role.save
+
+moviename = Movie.where({title: "The Dark Knight"})[0]
+
+actorname = Person.where({name: "Christian Bale"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "Bruce Wayne"
+})
+role.save
+
+actorname = Person.where({name: "Heath Ledger"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "The Joker"
+})
+role.save
+
+actorname = Person.where({name: "Aaron Eckhart"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "Harvey Dent"
+})
+role.save
+
+actorname = Person.where({name: "Michael Caine"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "Alfred"
+})
+role.save
+
+actorname = Person.where({name: "Maggie Gyllenhaal"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "Rachel Dawes"
+})
+role.save
+
+moviename = Movie.where({title: "The Dark Knight Rises"})[0]
+
+actorname = Person.where({name: "Christian Bale"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "Bruce Wayne"
+})
+role.save
+
+actorname = Person.where({name: "Gary Oldman"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "Commissioner Gordon"
+})
+role.save
+
+actorname = Person.where({name: "Tom Hardy"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "Bane"
+})
+role.save
+
+actorname = Person.where({name: "Joseph Gordon-Levitt"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "John Blake"
+})
+role.save
+
+actorname = Person.where({name: "Anne Hathway"})[0]
+role = Role.new({
+    movie_id: moviename.id,
+    person_id: actorname.id,
+    character_name: "Selina Kyle"
+})
+role.save
 
 # Prints a header for the movies output
 puts "Movies"
